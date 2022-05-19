@@ -6,7 +6,7 @@
     <div class="container">
 
         <h2 class="fw-bold"> CREA UN NUOVO POST:</h2>
-        <h3 class="mb-4">Inserisci qui il titolo del tuo post, il relativo slug e il contenuto del post!</h3>
+        <h3 class="mb-4">Inserisci qui il titolo, il relativo slug e il contenuto del tuo post!</h3>
         <div class="row">
             <div class="col">
                 <form method="POST" action="{{ route('admin.posts.store') }}">
@@ -25,7 +25,7 @@
                         <label for="slug" class="form-label fw-bold" style="color: rgb(255, 119, 0)">Slug</label>
                         <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug') }}">
                     </div>
-                    <input type="button" value="Generate slug" id="btn-slugger">
+                    <input type="button" class="btn btn-warning fw-bold mb-4" value="Generate slug" id="btn-slugger">
                     @error('slug')
                         <div class="alert alert-warning">{{ $message }}</div>
                     @enderror
