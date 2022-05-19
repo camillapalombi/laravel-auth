@@ -3,11 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 use App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    public $validators = [
+        'title'     => 'required|max:100',
+        'content'   => 'required'
+    ];
+
+    private function getValidators($model) {
+        return [
+            'title'     => 'required|max:100',
+            'slug' => [
+                'required',
+                Rule::unique('posts')->ignore($model),
+                'max:100'
+            ],
+            'content'   => 'required'
+        ];
+    }
     /**
      * Display a listing of the resource.
      *

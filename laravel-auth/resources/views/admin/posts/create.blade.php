@@ -4,6 +4,9 @@
 
 @section('pageMain')
     <div class="container">
+
+        <h2 class="fw-bold"> CREA UN NUOVO POST:</h2>
+        <h3 class="mb-4">Inserisci qui il titolo del tuo post, il relativo slug e il contenuto del post!</h3>
         <div class="row">
             <div class="col">
                 <form method="POST" action="{{ route('admin.posts.store') }}">
@@ -11,7 +14,7 @@
                     @csrf
 
                     <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
+                        <label for="title" class="form-label fw-bold" style="color: rgb(255, 119, 0)">Title</label>
                         <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
                       </div>
                     @error('title')
@@ -19,7 +22,7 @@
                     @enderror
 
                     <div class="mb-3">
-                        <label for="slug" class="form-label">Slug</label>
+                        <label for="slug" class="form-label fw-bold" style="color: rgb(255, 119, 0)">Slug</label>
                         <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug') }}">
                     </div>
                     @error('slug')
@@ -27,15 +30,17 @@
                     @enderror
 
                     <div class="mb-3">
-                        <label for="content" class="form-label">Content</label>
-                        <input type="text" class="form-control" id="content" name="content" value="{{ old('content') }}">
+                        <label for="content" class="form-label fw-bold" style="color: rgb(255, 119, 0)">Content</label>
+                        <textarea type="text" class="form-control" id="content" name="content"> {{ old('content') }} </textarea>
                     </div>
                     @error('content')
                         <div class="alert alert-warning">{{ $message }}</div>
                     @enderror
                 
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary mt-4 fw-bold">SAVE</button>
+
+                    <a class="btn btn-success mt-4 fw-bold ms-4" href="{{ url()->previous() }}" role="button">BACK</a>
 
                 </form>
             </div>
