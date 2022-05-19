@@ -47,12 +47,12 @@
 
     {{ $posts->links() }}
 
-    <section id="confirmation-overlay" class="overlay d-none">
-        <div class="popup">
-            <h1>Sei sicuro di voler eliminare?</h1>
+    <section id="delete-confirm" class="d-none">
+        <div class="pop-up">
+            <h3>Sei sicuro di voler eliminare?</h3>
             <div class="d-flex justify-content-center">
-                <button id="btn-no" class="btn btn-primary me-3">NO</button>
-                <form method="POST" data-base="{{ route('admin.posts.destroy', 0) }}">
+                <button id="btn-no" class="btn btn-success me-3">NO</button>
+                <form method="POST" data-base="{{ route('admin.posts.index') }}">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger">SI</button>
@@ -60,7 +60,7 @@
             </div>
         </div>
     </section>
-</div>
+
 
 
 @endsection

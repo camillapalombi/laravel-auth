@@ -53617,9 +53617,12 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -53648,6 +53651,23 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+
+var deleteConfirm = document.getElementById('delete-confirm');
+
+if (deleteConfirm) {
+  var confirmationForm = deleteConfirm.querySelector('form');
+  document.querySelectorAll('.btn-delete').forEach(function (button) {
+    button.addEventListener('click', function () {
+      // mostrare l'overlay di conferma
+      deleteConfirm.classList.remove('d-none');
+      confirmationForm.action = confirmationForm.dataset.base + '/' + this.dataset.id;
+    });
+  });
+  document.getElementById('btn-no').addEventListener('click', function () {
+    confirmationForm.action = '';
+    deleteConfirm.classList.add('d-none');
+  });
+}
 
 /***/ }),
 

@@ -12,7 +12,7 @@ class PostController extends Controller
 
     public $validators = [
         'title'     => 'required|max:100',
-        'content'   => 'required'
+        'content'   => 'required|min:10'
     ];
 
     private function getValidators($model) {
@@ -23,7 +23,7 @@ class PostController extends Controller
                 Rule::unique('posts')->ignore($model),
                 'max:100'
             ],
-            'content'   => 'required'
+            'content'   => 'required|min:10'
         ];
     }
     /**
@@ -112,6 +112,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('admin.posts.index');
     }
 }
