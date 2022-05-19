@@ -13,7 +13,7 @@ class Post extends Model
         return 'slug';
     }
 
-    
+
     protected $fillable = [
         'title',
         'content',
@@ -28,6 +28,6 @@ class Post extends Model
             $slug = "$baseSlug-$_i";
             $_i++;
         }
-        return $slug;
+        return $slug->__toString();
     }
 }

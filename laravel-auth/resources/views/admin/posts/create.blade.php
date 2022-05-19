@@ -25,6 +25,7 @@
                         <label for="slug" class="form-label fw-bold" style="color: rgb(255, 119, 0)">Slug</label>
                         <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug') }}">
                     </div>
+                    <input type="button" value="Generate slug" id="btn-slugger">
                     @error('slug')
                         <div class="alert alert-warning">{{ $message }}</div>
                     @enderror

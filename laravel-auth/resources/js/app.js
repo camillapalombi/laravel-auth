@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+ const { default: Axios } = require('axios');
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -27,8 +29,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+ const app = new Vue({
     el: '#app',
+    render: h => h(ExampleComponent)
 });
 
 
@@ -51,4 +54,27 @@ if (deleteConfirm) {
     confirmationForm.action = '';
     deleteConfirm.classList.add('d-none');
   });
+}
+
+
+
+
+
+
+
+
+
+const btnSlugger = document.querySelector('#btn-slugger');
+if (btnSlugger) {
+    btnSlugger.addEventListener('click', function() {
+        const eleSlug = document.querySelector('#slug');
+        const title = document.querySelector('#title').value;
+
+        Axios.post('/admin/slugger', {
+            originalStr: title,
+        })
+            .then(function (response) {
+                eleSlug.value = response.data.slug;
+            })
+    });
 }
