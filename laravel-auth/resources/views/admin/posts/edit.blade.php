@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <form method="POST" action="{{ route('admin.posts.update', $post->id ) }}">
+                <form method="POST" action="{{ route('admin.posts.update', $post->slug ) }}">
 
                     @csrf
                     @method('PUT')
@@ -20,6 +20,11 @@
                     <div class="mb-3">
                         <label for="slug" class="form-label">Slug</label>
                         <input type="text" class="form-control" id="slug" name="slug" value="{{ $post->slug }}" {{ old('slug', $post->slug) }}>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Content</label>
+                        <input type="text" class="form-control" id="content" name="content" value="{{ $post->content }}" {{ old('content', $post->content) }}>
                     </div>
 
                     <div class="mb-3">

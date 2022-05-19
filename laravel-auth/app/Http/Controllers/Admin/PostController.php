@@ -38,11 +38,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $formData = $request->all();
+        $request->validate($this->getValidators(null));
 
-        $newPost = Post::create($formData);
- 
-        return redirect()->route('admin.posts.index', $newPost->id);
+        $post = Post::create($request->all());
+
+        return redirect()->route('admin.posts.show', $post->slug);
     }
 
     /**
@@ -79,9 +79,11 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $data = $request->all();
-        $post->update($data);
-        return redirect()->route('admin.posts.show', $post->id);
+        $request->validate($this->getValidators($post));
+
+        $post->update($request->all());
+
+        return redirect()->route('admin.posts.show', $post->slug);
     }
 
     /**

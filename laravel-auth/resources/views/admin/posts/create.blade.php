@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('pageTitle', 'Create new post')
+@section('pageTitle', 'Create new posts')
 
 @section('pageMain')
     <div class="container">
@@ -12,7 +12,7 @@
 
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="title" name="title" value="{{ $post->title }}" {{ old('title', $post->title) }}>
+                        <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
                       </div>
                     @error('title')
                         <div class="alert alert-warning">{{ $message }}</div>
@@ -20,25 +20,17 @@
 
                     <div class="mb-3">
                         <label for="slug" class="form-label">Slug</label>
-                        <input type="text" class="form-control" id="slug" name="slug" value="{{ $post->slug }}" {{ old('slug', $post->slug) }}>
+                        <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug') }}">
                     </div>
                     @error('slug')
                         <div class="alert alert-warning">{{ $message }}</div>
                     @enderror
 
                     <div class="mb-3">
-                        <label for="created_at" class="form-label">Created:</label>
-                        <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $post->created_at }}" {{ old('created_at', $post->created_at) }}>
+                        <label for="content" class="form-label">Content</label>
+                        <input type="text" class="form-control" id="content" name="content" value="{{ old('content') }}">
                     </div>
-                    @error('created_at')
-                        <div class="alert alert-warning">{{ $message }}</div>
-                    @enderror
-
-                    <div class="mb-3">
-                        <label for="updated_at" class="form-label">Updated:</label>
-                        <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $post->updated_at }}" {{ old('updated_at', $post->updated_at) }}>
-                    </div>
-                    @error('updated_at')
+                    @error('content')
                         <div class="alert alert-warning">{{ $message }}</div>
                     @enderror
                 
