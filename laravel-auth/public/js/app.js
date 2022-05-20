@@ -53652,10 +53652,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  */
 
 var app = new Vue({
-  el: '#app',
-  render: function render(h) {
-    return h(ExampleComponent);
-  }
+  el: '#app'
 });
 
 var deleteConfirm = document.getElementById('delete-confirm');

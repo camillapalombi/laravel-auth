@@ -8,7 +8,7 @@
     @if (session('deleted'))
         <div class="alert alert-warning">{{ session('deleted') }}</div>
     @endif
-    <div class="row">
+    <div class="row mb-5">
         <div class="col">
             <table class="table table-dark table-hover">
                 <thead>
